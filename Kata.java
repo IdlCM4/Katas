@@ -1,9 +1,13 @@
 package Katas;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * A set of katas resolved on java from www.codewars.com
+ */
 public class Kata{
 
   /**
@@ -68,7 +72,7 @@ public class Kata{
    * Complete the findNextSquare method that finds the next integral perfect square after the one passed as a parameter. 
    * Recall that an integral perfect square is an integer n such that sqrt(n) is also an integer.
    * If the parameter is itself not a perfect square then -1 should be returned. You may assume the parameter is non-negative.
-   * Examples:(Input --> Output)
+   * Examples (Input --> Output):
    *    121 --> 144
    *    625 --> 676
    *    114 --> -1 since 114 is not a perfect square
@@ -110,14 +114,14 @@ public class Kata{
    * Trolls are attacking your comment section!
    * A common way to deal with this situation is to remove all of the vowels from the trolls' comments, neutralizing the threat.
    * Your task is to write a function that takes a string and return a new string with all vowels removed.
-   * Example 
+   * Example: 
    *    "This website is for losers LOL!" would become "Ths wbst s fr lsrs LL!".
    * 
    * Note: for this kata y isn't considered a vowel.
    * @param str
    * @return
    */
-  public static String disemvowel(String str) {
+  public static String disemVowel(String str) {
     return str.replaceAll("[aeiouAEIOU]", "");
 }
 
@@ -142,7 +146,6 @@ public class Kata{
     return sol;
   }
 
-  
   /**
    * Rock Paper Scissors
    * Let's play! You have to return which player won! In case of a draw return Draw!.
@@ -173,10 +176,96 @@ public class Kata{
     }
   }
 
+  /**
+   * You are given the length and width of a 4-sided polygon. The polygon can either be a rectangle or a square.
+   * If it is a square, return its area. If it is a rectangle, return its perimeter.
+   * Example (Input1, Input2 --> Output):
+   *    6, 10 --> 32
+   *    3, 3 --> 9
+   * Note: for the purposes of this kata you will assume that it is a square if its length and width are equal, 
+   *  otherwise it is a rectangle.
+   * @param l
+   * @param w
+   * @return
+   */
+  public static int areaOrPerimeter (int l, int w) {
+    return (l == w) ? l * w : l*2 + w*2;
+  }
 
-  
+  /**
+   * Timmy & Sarah think they are in love, but around where they live, they will only know once they pick a flower each. 
+   * If one of the flowers has an even number of petals and the other has an odd number of petals it means they are in love. 
+   * Write a function that will take the number of petals of each flower and return true if they are in love and false if 
+   * they aren't.
+   * @param flower1
+   * @param flower2
+   * @return
+   */
+  public static boolean isLove(final int flower1, final int flower2) {
+    if((flower1%2 == 0 && flower2%2 != 0) || (flower1%2 != 0 && flower2%2 == 0)) return true;
+    else return false;
+  }
+
+  /**
+   * Your task is to write a function which returns the sum of following series upto nth term(parameter).
+   * Series: 1 + 1/4 + 1/7 + 1/10 + 1/13 + 1/16 +...
+   * Rules:
+   *    You need to round the answer to 2 decimal places and return it as String.
+   *    If the given value is 0 then it should return 0.00
+   *    You will only be given Natural Numbers as arguments.
+   * Examples (Input --> Output):
+   *    1 --> 1 --> "1.00"
+   *    2 --> 1 + 1/4 --> "1.25"
+   *    5 --> 1 + 1/4 + 1/7 + 1/10 + 1/13 --> "1.57"
+   * @param n
+   * @return
+   */
+  public static String seriesSum(int n) {
+    float d = 1, s = 0;
+    if(n == 0) return "0.00";
+    else{
+      for(int i = 0; i < n; i++){
+        s += 1 / d;
+        d += 3;
+      }
+      return String.format("%.2f", s);
+    }
+	}
+
+/**
+ * Create a function that gives a personalized greeting. This function takes two parameters: name and owner.
+ * Use conditionals to return the proper message:
+ *    case	return
+ *    name equals owner	'Hello boss'
+ *    otherwise	'Hello guest'
+ * @param name
+ * @param owner
+ * @return
+ */
+  public static String greet(String name, String owner) {
+    return (name.equals(owner)) ? "Hello boss" : "Hello guest";
+  }
+    
+  /**
+   * Given a non-empty array of integers, return the result of multiplying the values together in order. 
+   * Example:
+   *    [1, 2, 3, 4] => 1 * 2 * 3 * 4 = 24
+   *    [4, 1, 1, 4] => 1 * 1 * 4 * 4 = 16
+   * @param x
+   * @return
+   */
+  public static int grow(int[] x){
+    int r = 1;
+    for(int i = 0; i < x.length; i++){
+      r *= x[i];
+    }
+    return r;
+  }
+
+
+
   /**** TESTS *****/
   public static void main(String[] args) {
-    System.out.println(rps("rock", "scissors"));
+    System.out.println(grow(new int[]{1,2,3}));
   }
 }
