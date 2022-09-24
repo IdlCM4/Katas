@@ -19,9 +19,7 @@ public class Kata{
   public static String reverseWords(final String original){
     String[] splitted = original.split("[ ]");
     String sol = "";
-    if(splitted.length == 0){
-      sol += original;
-    }
+    if(splitted.length == 0) sol += original;
     else{
       StringBuilder s = new StringBuilder(splitted[0]);
         s.reverse();
@@ -47,7 +45,6 @@ public class Kata{
    * @return
    */
   public static int[] countBy(int x, int n){
-
     int i = 0, d = 1;
     int[] sol = new int[n];
     while(i < n){
@@ -80,17 +77,15 @@ public class Kata{
    * @return
    */
   public static long findNextSquare(long sq) {
-  int i = (int)Math.sqrt(sq);
-  double sol = 0;
-  if(sq%i != 0){
-    sol = -1;
+    int i = (int)Math.sqrt(sq);
+    double sol = 0;
+    if(sq%i != 0) sol = -1;
+    else{
+      i++;
+      sol = Math.pow(i, 2);
+    }
+    return (long)sol; 
   }
-  else{
-    i++;
-    sol = Math.pow(i, 2);
-  }
-  return (long)sol; 
-}
 
   /**
    * Write function bmi that calculates body mass index (bmi = weight / height2).
@@ -123,7 +118,7 @@ public class Kata{
    */
   public static String disemVowel(String str) {
     return str.replaceAll("[aeiouAEIOU]", "");
-}
+  }
 
   /**
    * Your team is writing a fancy new text editor and you've been tasked with implementing the line numbering.
@@ -158,7 +153,6 @@ public class Kata{
    * @return
    */
   public static String rps(String p1, String p2) {
-    // your code
     if(p1.equals(p2)) return "Draw!";
     else{
       switch(p1){
